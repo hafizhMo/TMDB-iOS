@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
+
     private lazy var label: UILabel = {
         let label = UILabel(frame: .zero)
         label.backgroundColor = .systemBackground
@@ -16,11 +16,10 @@ class ViewController: UIViewController {
         label.text = "Test Label"
         return label
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "ViewController"
-        
         view = label
     }
 }

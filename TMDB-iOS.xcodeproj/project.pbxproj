@@ -141,6 +141,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FB7B08D6298EABE70027EECD /* Build configuration list for PBXNativeTarget "TMDB-iOS" */;
 			buildPhases = (
+				FB7B08E3298FF6E60027EECD /* Run SwiftLint */,
 				FB7B08A8298EABE60027EECD /* Sources */,
 				FB7B08A9298EABE60027EECD /* Frameworks */,
 				FB7B08AA298EABE60027EECD /* Resources */,
@@ -257,6 +258,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FB7B08E3298FF6E60027EECD /* Run SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FB7B08A8298EABE60027EECD /* Sources */ = {
