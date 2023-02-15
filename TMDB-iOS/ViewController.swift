@@ -10,10 +10,16 @@ import UIKit
 class ViewController: UIViewController {
 
     private var data: [MoviesItem] = []
-    private let loader = MoviesLoader(
-        url: URL(string: "https://api.themoviedb.org/3/movie/top_rated?api_key=2696829a81b1b5827d515ff121700838")!,
-        client: URLSession.init(configuration: .default)
-    )
+    private let loader: MoviesLoader?
+
+    init(with loader: MoviesLoader?) {
+        self.loader = loader
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
@@ -28,6 +34,7 @@ class ViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
 
+        guard let loader = loader else { return }
         loader.load { [weak self] result in
             guard let self = self else { return }
 
