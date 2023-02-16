@@ -1,30 +1,29 @@
 //
-//  MoviesLoader.swift
+//  MoviesRemoteLoader.swift
 //  TMDB-iOS
 //
-//  Created by Hafizh Mo on 14/02/23.
+//  Created by Hafizh Mo on 16/02/23.
 //
 
 import Foundation
 
-class MoviesLoader {
+class MoviesRemoteLoader: MoviesLoader {
 
     private let url: URL
     private let client: URLSession
 
-    typealias Result = Swift.Result<[MoviesItem], Error>
+    typealias Result = MoviesLoader.Result
 
     init(url: URL, client: URLSession) {
         self.url = url
         self.client = client
     }
 
-    func load(completion: @escaping (Result) -> Void) {
+    override func load(completion: @escaping (Result) -> Void) {
         client.dataTask(with: url) { [weak self] data, response, _ in
             guard self != nil else { return }
-
             if let data = data, let response = response as? HTTPURLResponse {
-                completion(MoviesLoader.map(data, response))
+                completion(MoviesRemoteLoader.map(data, response))
             } else {
                 completion(.failure(NetworkError.networkError))
             }

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB03CB6B299DEF70000204B8 /* MoviesRemoteLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB03CB6A299DEF70000204B8 /* MoviesRemoteLoader.swift */; };
+		FB03CB6D299DF12F000204B8 /* MoviesLoaderFallbackComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB03CB6C299DF12F000204B8 /* MoviesLoaderFallbackComposite.swift */; };
+		FB03CB73299DF7FC000204B8 /* MoviesJsonLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB03CB72299DF7FC000204B8 /* MoviesJsonLoader.swift */; };
+		FB03CB75299DFC41000204B8 /* Movies.json in Resources */ = {isa = PBXBuildFile; fileRef = FB03CB74299DFC41000204B8 /* Movies.json */; };
 		FB23E7B8299BF3E8002B93DE /* MoviesItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB23E7B7299BF3E8002B93DE /* MoviesItem.swift */; };
 		FB23E7BC299BF40C002B93DE /* MoviesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB23E7BB299BF40C002B93DE /* MoviesResponse.swift */; };
 		FB23E7BF299BF424002B93DE /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB23E7BE299BF424002B93DE /* NetworkError.swift */; };
@@ -43,6 +47,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FB03CB6A299DEF70000204B8 /* MoviesRemoteLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesRemoteLoader.swift; sourceTree = "<group>"; };
+		FB03CB6C299DF12F000204B8 /* MoviesLoaderFallbackComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesLoaderFallbackComposite.swift; sourceTree = "<group>"; };
+		FB03CB72299DF7FC000204B8 /* MoviesJsonLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesJsonLoader.swift; sourceTree = "<group>"; };
+		FB03CB74299DFC41000204B8 /* Movies.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Movies.json; sourceTree = "<group>"; };
 		FB23E7B7299BF3E8002B93DE /* MoviesItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesItem.swift; sourceTree = "<group>"; };
 		FB23E7BB299BF40C002B93DE /* MoviesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesResponse.swift; sourceTree = "<group>"; };
 		FB23E7BE299BF424002B93DE /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -90,12 +98,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FB03CB6E299DF428000204B8 /* Json */ = {
+			isa = PBXGroup;
+			children = (
+				FB03CB74299DFC41000204B8 /* Movies.json */,
+				FB03CB72299DF7FC000204B8 /* MoviesJsonLoader.swift */,
+			);
+			path = Json;
+			sourceTree = "<group>";
+		};
 		FB23E7B6299BF3D0002B93DE /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				FB03CB6E299DF428000204B8 /* Json */,
 				FB23E7C4299D3C6C002B93DE /* Local */,
 				FB23E7B9299BF3EE002B93DE /* Remote */,
 				FB23E7B7299BF3E8002B93DE /* MoviesItem.swift */,
+				FB23E7C2299BF447002B93DE /* MoviesLoader.swift */,
+				FB03CB6C299DF12F000204B8 /* MoviesLoaderFallbackComposite.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -121,8 +141,8 @@
 			isa = PBXGroup;
 			children = (
 				FB23E7C0299BF431002B93DE /* MoviesItemMapper.swift */,
-				FB23E7C2299BF447002B93DE /* MoviesLoader.swift */,
 				FB23E7BE299BF424002B93DE /* NetworkError.swift */,
+				FB03CB6A299DEF70000204B8 /* MoviesRemoteLoader.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -326,6 +346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB7B08B9298EABE70027EECD /* Assets.xcassets in Resources */,
+				FB03CB75299DFC41000204B8 /* Movies.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,9 +401,12 @@
 				FB7B08B4298EABE60027EECD /* ViewController.swift in Sources */,
 				FB7B08B0298EABE60027EECD /* AppDelegate.swift in Sources */,
 				FB23E7BF299BF424002B93DE /* NetworkError.swift in Sources */,
+				FB03CB73299DF7FC000204B8 /* MoviesJsonLoader.swift in Sources */,
 				FB23E7C3299BF447002B93DE /* MoviesLoader.swift in Sources */,
 				FB23E7C8299D3CA5002B93DE /* TMDB-CD.xcdatamodeld in Sources */,
 				FB23E7D6299D3E30002B93DE /* CoreDataManager.swift in Sources */,
+				FB03CB6D299DF12F000204B8 /* MoviesLoaderFallbackComposite.swift in Sources */,
+				FB03CB6B299DEF70000204B8 /* MoviesRemoteLoader.swift in Sources */,
 				FB23E7D8299D3FDF002B93DE /* MoviesLocalLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

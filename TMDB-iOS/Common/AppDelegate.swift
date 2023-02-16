@@ -18,9 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let url = URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=2696829a81b1b5827d515ff121700838")!
         let client = URLSession(configuration: .ephemeral)
-        let loader = MoviesLocalLoader(url: url, client: client)
+        let jsonLoader = MoviesJsonLoader()
+        let remoteLoader = MoviesRemoteLoader(url: url, client: client)
+        let composite = MoviesLoaderFallbackComposite(primary: remoteLoader, fallback: jsonLoader)
 
-        window.rootViewController = UINavigationController(rootViewController: ViewController(with: loader))
+        window.rootViewController = UINavigationController(rootViewController: ViewController(with: composite))
         window.makeKeyAndVisible()
         self.window = window
         return true
