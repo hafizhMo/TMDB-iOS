@@ -48,10 +48,8 @@ class ViewController: UIViewController {
     }
 
     private func updateData(with movies: [Movies]) {
-        DispatchQueue.main.async {
-            self.data.append(contentsOf: movies)
-            self.tableView.reloadData()
-        }
+        self.data.append(contentsOf: movies)
+        self.tableView.reloadData()
     }
 }
 
