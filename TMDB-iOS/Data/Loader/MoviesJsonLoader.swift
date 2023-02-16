@@ -11,7 +11,7 @@ class MoviesJsonLoader: MoviesLoader {
 
     override func load(completion: @escaping (MoviesLoader.Result) -> Void) {
         guard let url = Bundle.main.url(forResource: "Movies", withExtension: "json") else {
-            completion(.failure(NetworkError.missingJSONFile))
+            completion(.failure(GeneralError.missingJSONFile))
             return
         }
         do {
@@ -19,11 +19,11 @@ class MoviesJsonLoader: MoviesLoader {
             let decoder = JSONDecoder()
             let jsonData = try decoder.decode(MoviesResponse.self, from: data)
             let movies = jsonData.results.map { remoteMovie in
-                MoviesItem(title: remoteMovie.title)
+                Movies(title: remoteMovie.title)
             }
             completion(.success(movies))
         } catch {
-            completion(.failure(NetworkError.unexpectedData))
+            completion(.failure(GeneralError.unexpectedData))
         }
     }
 }

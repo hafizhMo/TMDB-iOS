@@ -25,17 +25,17 @@ class MoviesRemoteLoader: MoviesLoader {
             if let data = data, let response = response as? HTTPURLResponse {
                 completion(MoviesRemoteLoader.map(data, response))
             } else {
-                completion(.failure(NetworkError.networkError))
+                completion(.failure(GeneralError.networkError))
             }
         }.resume()
     }
 
     private static func map(_ data: Data, _ response: HTTPURLResponse) -> Result {
         do {
-            let movies = try MoviesItemMapper.map(data, from: response)
+            let movies = try MoviesMapper.map(data, from: response)
             return .success(movies)
         } catch {
-            return .failure(NetworkError.unexpectedData)
+            return .failure(GeneralError.unexpectedData)
         }
     }
 }

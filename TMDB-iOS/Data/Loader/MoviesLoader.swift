@@ -9,7 +9,7 @@ import Foundation
 
 class MoviesLoader {
 
-    typealias Result = Swift.Result<[MoviesItem], Error>
+    typealias Result = Swift.Result<[Movies], Error>
 
     func load(completion: @escaping (Result) -> Void) {}
 

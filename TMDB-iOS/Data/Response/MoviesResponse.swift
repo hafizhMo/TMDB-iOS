@@ -11,12 +11,12 @@ import Foundation
 
 struct MoviesResponse: Codable {
     let page: Int
-    let results: [Movies]
+    let results: [MoviesResultResponse]
     let total_pages: Int
     let total_results: Int
 }
 
-struct Movies: Codable {
+struct MoviesResultResponse: Codable {
     let adult: Bool
     let backdrop_path: String
     let genre_ids: [Int]

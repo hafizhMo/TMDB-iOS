@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    private var data: [MoviesItem] = []
+    private var data: [Movies] = []
     private let loader: MoviesLoader?
 
     init(with loader: MoviesLoader?) {
@@ -47,7 +47,7 @@ class ViewController: UIViewController {
         }
     }
 
-    private func updateData(with movies: [MoviesItem]) {
+    private func updateData(with movies: [Movies]) {
         DispatchQueue.main.async {
             self.data.append(contentsOf: movies)
             self.tableView.reloadData()

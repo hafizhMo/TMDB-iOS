@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct MoviesItem {
+struct Movies {
     let title: String
 }

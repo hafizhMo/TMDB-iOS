@@ -7,15 +7,15 @@
 
 import Foundation
 
-class MoviesItemMapper {
+class MoviesMapper {
 
-    static func map(_ data: Data, from response: HTTPURLResponse) throws -> [MoviesItem] {
+    static func map(_ data: Data, from response: HTTPURLResponse) throws -> [Movies] {
         guard response.statusCode == 200, let items = try? JSONDecoder().decode(MoviesResponse.self, from: data) else {
-            throw NetworkError.unexpectedData
+            throw GeneralError.unexpectedData
         }
 
         let movies = items.results.map { remoteMovies in
-            MoviesItem(title: remoteMovies.title)
+            Movies(title: remoteMovies.title)
         }
         return movies
     }
