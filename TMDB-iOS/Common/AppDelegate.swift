@@ -16,11 +16,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let window = UIWindow(frame: UIScreen.main.bounds)
 
+        // Remote
         let url = URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=2696829a81b1b5827d515ff121700838")!
-        let client = URLSession(configuration: .ephemeral)
+        let session = URLSession(configuration: .ephemeral)
+        let client = URLSessionHTTPClient(session: session)
+        let remote = MoviesRemoteLoader(url: url, client: AlamofireHTTPClient())
+
+        // Remote Decorator
+        let localLoader = MoviesLocalLoader(loader: remote)
+
+        // JSON
         let jsonLoader = MoviesJsonLoader()
-        let remoteLoader = MoviesRemoteLoader(url: url, client: client)
-        let composite = MoviesLoaderFallbackComposite(primary: remoteLoader, fallback: jsonLoader)
+
+        // Loader
+        let composite = MoviesLoaderFallbackComposite(primary: localLoader, fallback: jsonLoader)
 
         window.rootViewController = UINavigationController(rootViewController: ViewController(with: composite))
         window.makeKeyAndVisible()

@@ -8,8 +8,15 @@
 import Foundation
 
 class MoviesLocalLoader: MoviesLoader {
-    override func load(completion: @escaping (MoviesLoader.Result) -> Void) {
-        super.load { result in
+
+    private let loader: MoviesLoader
+
+    init(loader: MoviesLoader) {
+        self.loader = loader
+    }
+
+    func load(completion: @escaping (MoviesLoader.Result) -> Void) {
+        loader.load { result in
             switch result {
             case .success(let movies):
                 print("\(movies.count) items saved to local storage")

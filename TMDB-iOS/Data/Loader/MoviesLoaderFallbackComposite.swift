@@ -17,7 +17,7 @@ class MoviesLoaderFallbackComposite: MoviesLoader {
         self.fallback = fallback
     }
 
-    override func load(completion: @escaping (MoviesLoader.Result) -> Void) {
+    func load(completion: @escaping (MoviesLoader.Result) -> Void) {
         primary.load { [weak self] result in
             guard let self = self else { return }
             switch result {

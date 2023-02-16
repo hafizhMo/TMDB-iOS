@@ -9,7 +9,7 @@ import Foundation
 
 class MoviesJsonLoader: MoviesLoader {
 
-    override func load(completion: @escaping (MoviesLoader.Result) -> Void) {
+    func load(completion: @escaping (MoviesLoader.Result) -> Void) {
         guard let url = Bundle.main.url(forResource: "Movies", withExtension: "json") else {
             completion(.failure(GeneralError.missingJSONFile))
             return

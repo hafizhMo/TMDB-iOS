@@ -2,15 +2,14 @@
 //  MoviesLoader.swift
 //  TMDB-iOS
 //
-//  Created by Hafizh Mo on 14/02/23.
+//  Created by Hafizh Mo on 16/02/23.
 //
 
 import Foundation
 
-class MoviesLoader {
+protocol MoviesLoader {
 
     typealias Result = Swift.Result<[Movies], Error>
 
-    func load(completion: @escaping (Result) -> Void) {}
-
+    func load(completion: @escaping (Result) -> Void)
 }

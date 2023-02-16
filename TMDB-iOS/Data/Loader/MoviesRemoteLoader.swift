@@ -10,24 +10,24 @@ import Foundation
 class MoviesRemoteLoader: MoviesLoader {
 
     private let url: URL
-    private let client: URLSession
+    private let client: HTTPClient
 
-    typealias Result = MoviesLoader.Result
+    typealias Result = Swift.Result<[Movies], Error>
 
-    init(url: URL, client: URLSession) {
+    init(url: URL, client: HTTPClient) {
         self.url = url
         self.client = client
     }
 
-    override func load(completion: @escaping (Result) -> Void) {
-        client.dataTask(with: url) { [weak self] data, response, _ in
-            guard self != nil else { return }
-            if let data = data, let response = response as? HTTPURLResponse {
+    func load(completion: @escaping (Result) -> Void) {
+        client.request(from: url) { results in
+            switch results {
+            case let .success((data, response)):
                 completion(MoviesRemoteLoader.map(data, response))
-            } else {
+            case .failure:
                 completion(.failure(GeneralError.networkError))
             }
-        }.resume()
+        }
     }
 
     private static func map(_ data: Data, _ response: HTTPURLResponse) -> Result {
